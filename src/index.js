@@ -24,6 +24,7 @@ app
 // routes
 app
     .use(require('./routers/user').routes())
+    .use(require('./routers/order').routes())
 
 
 app.listen(port, () => {
