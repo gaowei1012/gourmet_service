@@ -1,5 +1,6 @@
 const UserModal = require('../db/mysql')
-const { encrpty, decrpty } = require('../utils/crpty')
+const {jwtSecret, tokenExpiresTime} = require('../config')
+const jwt = require('jsonwebtoken')
 
 /* 获取用户信息 */
 exports.getUserInfo = async (ctx, next) => {
@@ -8,7 +9,6 @@ exports.getUserInfo = async (ctx, next) => {
         code: 0,
         data: data
     }
-
     await next()
 }
 
@@ -17,11 +17,9 @@ exports.register = async (ctx, next) => {
     const create_at = new Date()
     let { username, password } = ctx.request.body;
 
-    newPassword = encrpty(password)
-
     // 写入数据库用户名密码不能为空
-    if ((username && newPassword) !== null) {
-        await UserModal.insterUserData([username, newPassword, create_at])
+    if ((username && password) !== null) {
+        await UserModal.insterUserData([username, password, create_at])
             .then(res => {
                 ctx.body = {
                     code: 1,
@@ -44,15 +42,20 @@ exports.register = async (ctx, next) => {
 /* 用户登录 */
 exports.login = async (ctx, next) => {
     let {username, password} = ctx.request.body
+    let payload = {
+        exp:Date.now() + tokenExpiresTime,
+        name: username
+    }
     if ((username && password) !== null) {
-        newPassword = encrpty(password)
-        await UserModal.getUserLogin(username, newPassword)
+        await UserModal.findUserLogin(username, password)
+        
             .then(res => {
                 // 用户登录成功，返回token
-                const token = ''
+                let token = jwt.sign(payload, jwtSecret)
                 ctx.body = {
                     code: 1,
-                    data: token
+                    message: 'OK',
+                    token: token
                 }
             })
             .catch(err => {
