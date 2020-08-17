@@ -8,18 +8,42 @@ const users = `
     ) character set = utf8;
 `
 
-const order = `
-    create table if not exists order(
+const orders = `
+    create table if not exists orders(
         id INT NOT NULL AUTO_INCREMENT,
-        username VARCHAR(100) NOT NULL COMMENT '用户名',
-        password VARCHAR(100) NOT NULL COMMENT '用户密码',
-        mobile VARCHAR(100) NOT NULL COMMENT '手机号',
-        avatar VARCHAR(100) NOT NULL COMMENT '用户头像',
+        order_title VARCHAR(100) NOT NULL COMMENT '订单名称',
+        order_desc VARCHAR(100) NOT NULL COMMENT '订单描述',
+        price VARCHAR(255) NOT NULL COMMENT '价格',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
         PRIMARY KEY(id)
-    ) character set = utf8;   
+    ) character set = utf8;
+`
+
+const address = `
+    create table if not exists address(
+        id INT NOT NULL AUTO_INCREMENT,
+        username VARCHAR(100) NOT NULL COMMENT '地址用户名',
+        tel VARCHAR(100) NOT NULL COMMENT '电话',
+        address VARCHAR(255) NOT NULL COMMENT '地址详情',
+        create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
+const shops = `
+    create table if not exists shops(
+        id INT NOT NULL AUTO_INCREMENT,
+        shop_name VARCHAR(100) NOT NULL COMMENT '商品名称',
+        type VARCHAR(100) NOT NULL COMMENT '商品类型',
+        shop_url VARCHAR(255) NOT NULL COMMENT '商品图片',
+        create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
 `
 
 module.exports = {
-    users
+    users,
+    orders,
+    address,
+    shops,
 }
