@@ -60,13 +60,25 @@ exports.findUserLogin = (username, password) => {
 
 // 添加购物车
 exports.insertOrderCat = (val) => {
-    const _sql = 'insert into orders set order_title=?, order_desc, price=?, create_at=?;'
+    const _sql = 'insert into orders set order_title=?, order_desc=?, order_url=?, price=?, type=?, create_at=?;'
     return query(_sql, val)
 }
 
-// 获取该用户所有订单
-exports.findOrderByUser = (id) => {
-    const _sql = `select * from orders where id=${id};`;
+// 获取所有订单
+exports.getAllOrder = () => {
+    const _sql = 'select * from orders;';
+    return query(_sql)
+}
+
+// 根据 type 类型获取订单
+exports.findOrderByType = (type) => {
+    const _sql = `select * from orders where type=${type};`;
+    return query(_sql)
+}
+
+// 删除订单
+exports.deleteOrderById = (id) => {
+    const _sql = `delete from orders where id=${id};`;
     return query(_sql)
 }
 

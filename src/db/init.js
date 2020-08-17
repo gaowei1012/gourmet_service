@@ -14,6 +14,8 @@ const orders = `
         order_title VARCHAR(100) NOT NULL COMMENT '订单名称',
         order_desc VARCHAR(100) NOT NULL COMMENT '订单描述',
         price VARCHAR(255) NOT NULL COMMENT '价格',
+        type VARCHAR(50) NOT NULL COMMENT '订单分类',
+        order_url VARCHAR(100) NOT NULL COMMENT '订单商品图片',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
         PRIMARY KEY(id)
     ) character set = utf8;
