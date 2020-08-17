@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 const { database } = require('../config')
-const { users, orders, address, shops } = require('./init')
+const { users, orders, address, shops, recommen } = require('./init')
 
 const pool = mysql.createPool({
     host: database.HOST,
@@ -37,6 +37,7 @@ createTable(users)
 createTable(orders)
 createTable(address)
 createTable(shops)
+createTable(recommen)
 
 // 用户注册
 exports.insterUserData = (val) => {
@@ -94,3 +95,14 @@ exports.findShopByType = (type) => {
     return query(_sql)
 }
 
+// 插入推荐商品
+exports.insertRecommen = (val) => {
+    const _sql = 'insert into recommen set shop_name=?, shop_url=?, create_at=?;';
+    return query(_sql, val)
+}
+
+// 获取推荐商品
+exports.findRecommen = () => {
+    const _sql = 'select * from recommen;';
+    return query(_sql)
+}

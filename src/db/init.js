@@ -41,9 +41,20 @@ const shops = `
     ) character set = utf8;
 `
 
+const recommen = `
+    create table if not exists recommen(
+        id INT NOT NULL AUTO_INCREMENT,
+        shop_url VARCHAR(255) NOT NULL COMMENT '商品图片',
+        shop_name VARCHAR(100) NOT NULL COMMENT '商品名称',
+        create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
+        PRIMARY KEY(id)
+    ) character set = utf8;
+`
+
 module.exports = {
     users,
     orders,
     address,
     shops,
+    recommen,
 }
