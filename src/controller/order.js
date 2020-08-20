@@ -33,7 +33,7 @@ exports.addOrderOnes = async (ctx, next) => {
             })
             .catch(err => {
                 ctx.body = {
-                    code: 1,
+                    code: -1,
                     data: err
                 }
             })
