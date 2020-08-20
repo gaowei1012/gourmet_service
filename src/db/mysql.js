@@ -60,7 +60,7 @@ exports.findUserLogin = (username, password) => {
 
 // 添加购物车
 exports.insertOrderCat = (val) => {
-    const _sql = 'insert into orders set order_title=?, order_desc=?, order_url=?, price=?, type=?, create_at=?;'
+    const _sql = 'insert into orders set order_title=?, order_desc=?, order_url=?, price=?, remarks=?, price_num=?, create_at=?;'
     return query(_sql, val)
 }
 

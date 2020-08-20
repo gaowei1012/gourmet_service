@@ -15,7 +15,6 @@ const orders = `
         order_desc VARCHAR(100) NOT NULL COMMENT '订单描述',
         price VARCHAR(50) NOT NULL COMMENT '价格',
         price_num VARCHAR(50) NOT NULL COMMENT '价格',
-        type VARCHAR(50) NOT NULL COMMENT '商品数量',
         order_url VARCHAR(100) NOT NULL COMMENT '订单商品图片',
         remarks VARCHAR(100) NOT NULL COMMENT '订单备注',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',

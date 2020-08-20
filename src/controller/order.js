@@ -21,10 +21,10 @@ exports.getAllOrder = async (ctx, next) => {
 
 /* 用户下单 添加购物车 */
 exports.addOrderOnes = async (ctx, next) => {
-    let { order_title, order_desc, price, order_url, type } = ctx.request.body
+    let { order_title, order_desc, price, order_url, price_num, remarks } = ctx.request.body
     let create_at = new Date()
     if ((order_desc && order_title && price && type && order_url) !== null) {
-        await OrderModal.insertOrderCat([order_title, order_desc, order_url, price, type, create_at])
+        await OrderModal.insertOrderCat([order_title, order_desc, order_url, price, remarks, price_num, create_at])
             .then(ret => {
                 ctx.body = {
                     code: 1,
