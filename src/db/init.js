@@ -17,6 +17,9 @@ const orders = `
         price_num VARCHAR(50) NOT NULL COMMENT '价格',
         order_url VARCHAR(100) NOT NULL COMMENT '订单商品图片',
         remarks VARCHAR(100) NOT NULL COMMENT '订单备注',
+        status VARCHAR(100) NOT NULL COMMENT '订单状态',
+        latitude VARCHAR(100) NOT NULL COMMENT '纬度',
+        longitude VARCHAR(100) NOT NULL COMMENT '经度',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
         PRIMARY KEY(id)
     ) character set = utf8;
@@ -37,8 +40,10 @@ const shops = `
     create table if not exists shops(
         id INT NOT NULL AUTO_INCREMENT,
         shop_name VARCHAR(100) NOT NULL COMMENT '商品名称',
-        type VARCHAR(100) NOT NULL COMMENT '商品类型',
-        shop_url VARCHAR(255) NOT NULL COMMENT '商品图片',
+        shop_detail VARCHAR(255) NOT NULL COMMENT '商品描述',
+        shop_url VARCHAR(100) NOT NULL COMMENT '商品图片',
+        price VARCHAR(50) NOT NULL COMMENT '商品价格',
+        type VARCHAR(50) NOT NULL COMMENT '商品类型',
         create_at VARCHAR(100) NOT NULL COMMENT '用户创建时间',
         PRIMARY KEY(id)
     ) character set = utf8;

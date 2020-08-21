@@ -24,10 +24,10 @@ exports.findShopByType = async (ctx, next) => {
 };
 
 exports.insertShop = async (ctx, next) => {
-  let { shop_name, type, shop_url } = ctx.request.body;
+  let { shop_name, type, shop_url, shop_detail, price } = ctx.request.body;
   let create_at = new Date();
-  if ((shop_name && type && shop_url) !== null) {
-    await ShopModal.insertShops([shop_name, type, shop_url, create_at])
+  if ((shop_name && type && shop_url && price && shop_detail) !== null) {
+    await ShopModal.insertShops([shop_name, shop_detail, type, shop_url, price, create_at])
       .then((ret) => {
         ctx.body = {
           code: 1,

@@ -60,7 +60,7 @@ exports.findUserLogin = (username, password) => {
 
 // 添加购物车
 exports.insertOrderCat = (val) => {
-    const _sql = 'insert into orders set order_title=?, order_desc=?, order_url=?, price=?, remarks=?, price_num=?, create_at=?;'
+    const _sql = 'insert into orders set order_title=?, order_desc=?, order_url=?, price=?, remarks=?, price_num=?, latitude=?, longitude=?, status=?, create_at=?;'
     return query(_sql, val)
 }
 
@@ -71,14 +71,20 @@ exports.getAllOrder = () => {
 }
 
 // 根据 type 类型获取订单
-exports.findOrderByType = (type) => {
-    const _sql = `select * from orders where type=${type};`;
+exports.findOrderById = (id) => {
+    const _sql = `select * from orders where id=${id};`;
     return query(_sql)
 }
 
 // 删除订单
 exports.deleteOrderById = (id) => {
     const _sql = `delete from orders where id=${id};`;
+    return query(_sql)
+}
+
+// 更细用户订单状态
+exports.updateOrderStatus = (status, id) => {
+    const _sql = `update orders set status=${status} where id=${id};`;
     return query(_sql)
 }
 
@@ -97,7 +103,7 @@ exports.findAddressByUserName = (username) => {
 
 // 添加商品（商品上架）
 exports.insertShops = (val) => {
-    const _sql = 'insert into shops set shop_name=?, type=?, shop_url=?, create_at=?;';
+    const _sql = 'insert into shops set shop_name=?, shop_detail=?, type=?, shop_url=?, price=?, create_at=?;';
     return query(_sql, val)
 }
 

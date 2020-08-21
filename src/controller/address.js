@@ -3,6 +3,7 @@ const AddressModal = require('../db/mysql')
 
 /* 添加地址 */
 exports.insertAddress = async (ctx, next) => {
+	console.log('add address', ctx.request.body)
 	let { address, username, tel } = ctx.request.body
 	let create_at = new Date()
 	if ((address && username && tel) !== null) {
