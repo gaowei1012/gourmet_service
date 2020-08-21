@@ -6,5 +6,6 @@ router.post('/api/order/addOrderOnes', controller.addOrderOnes)
 router.post('/api/order/getOrderById', controller.getOrderById)
 router.post('/api/order/deleteOrderById', controller.deleteOrderById)
 router.post('/api/order/updateOrderStatus', controller.updateOrderStatus)
+router.post('/api/order/findOrderByStatus', controller.findOrderByStatus)
 
 module.exports = router

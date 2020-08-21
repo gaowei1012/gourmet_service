@@ -119,3 +119,27 @@ exports.updateOrderStatus = async (ctx, next) => {
 
     await next()
 }
+
+// 完成订单
+exports.findOrderByStatus = async (ctx, next) => {
+    let { status } = ctx.request.body
+    if (status !== null) {
+        await OrderModal.findOrderByStatus(status)
+            .then(ret => {
+                ctx.body = {
+                    code: 1,
+                    data: ret
+                }
+            })
+            .catch(err => {
+                ctx.body = {
+                    code: 1,
+                    data: err
+                }
+            })
+    } else {
+        ctx.body = '字段非法'
+    }
+
+    await next()
+}

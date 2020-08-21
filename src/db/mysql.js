@@ -88,6 +88,12 @@ exports.updateOrderStatus = (status, id) => {
     return query(_sql)
 }
 
+// 根据状态获取对应订单
+exports.findOrderByStatus = (status) => {
+    const _sql = `select * from orders where status=${status};`;
+    return query(_sql)
+}
+
 // 添加用户地址
 exports.insertAddress = (val) => {
     const _sql = 'insert into address set username=?, tel=?, address=?, create_at=?;';
